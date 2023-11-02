@@ -231,3 +231,40 @@ select * from KhachHang where ten like '%an%' or ho like '%an%'
 
 insert into ChiTietLichHen(NgayTao,NgaySua,IdLichHen) values (GETDATE(),GETDATE(),'469ed22b-9c5c-4977-87cd-094da2df6e01')
 insert into LichSuLichHen(TrangThai,IdLichHen,NgayTao,NgaySua) values (1,'469ed22b-9c5c-4977-87cd-094da2df6e01',GETDATE(),GETDATE())
+
+alter table ChucVu Add isDelete bit
+alter table NhanVien Add isDelete bit
+alter table KhachHang Add isDelete bit
+alter table MauSac Add isDelete bit
+alter table HangXe Add isDelete bit
+alter table MauXe Add isDelete bit
+alter table NhaCungCap Add isDelete bit
+alter table PhuKien Add isDelete bit
+alter table ChiTietPhuTung Add isDelete bit
+alter table DichVu Add isDelete bit
+alter table LoaiDichVu Add isDelete bit
+alter table XeCuaKhach Add isDelete bit
+alter table LichHen Add isDelete bit
+alter table ChiTietLichHen Add isDelete bit
+alter table LichSuLichHen Add isDelete bit
+alter table LichSuSuDungPhuKien Add isDelete bit
+alter table HoaDon Add isDelete bit
+alter table HoaDonChiTiet Add isDelete bit
+alter table LichSuHoaDon Add isDelete bit
+	
+CREATE TABLE Author_NhanVien(
+  Id int IDENTITY(1,1),
+  Refresh_Token VARCHAR(255),
+  ExpirationTime DATETIME,
+  ChucVu INT,
+  NhanVien UNIQUEIDENTIFIER,
+  CONSTRAINT FK_ChucVu FOREIGN KEY(ChucVu) REFERENCES ChucVu(MaChucVu),
+  CONSTRAINT FK_NhanVien FOREIGN KEY(NhanVien) REFERENCES NhanVien(id)
+)
+CREATE TABLE Author_KhachHang(
+  Id int IDENTITY(1,1),
+  Refresh_Token VARCHAR(255),
+  ExpirationTime DATETIME,
+  KhachHang UNIQUEIDENTIFIER,
+  CONSTRAINT FK_Author_KhachHang FOREIGN KEY(KhachHang) REFERENCES KhachHang(id)
+)
